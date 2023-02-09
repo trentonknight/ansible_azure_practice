@@ -38,6 +38,8 @@ poetry run pip3 install --upgrade pip; \
 * [Authenticating with Azure](https://docs.ansible.com/ansible/latest/scenario_guides/guide_azure.html)
 * [Connect to Azure from the Ansible container](https://learn.microsoft.com/en-us/azure/developer/ansible/configure-in-docker-container?tabs=azure-cli)
 
+Be careful how you share or record your authentication information above. Do not include your secrets in a git repo or anything shared.
+
 For authentication to azure you must first ensure you have the following setup in your `~/.azure/credentials` file:
 
 ```bash
@@ -46,6 +48,15 @@ subscription_id=xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 client_id=xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 secret=xxxxxxxxxxxxxxxxx
 tenant=xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+```
+
+Alternativly you could export via .bashrc or directly in terminal if needed:
+
+```bash
+export AZURE_TENANT="<azure_tenant_id>"
+export AZURE_SUBSCRIPTION_ID="<azure_subscription_id>"
+export AZURE_CLIENT_ID="<service_principal_app_id>"
+export AZURE_SECRET="<service_principal_password>"
 ```
 
 ## To grab your subscrition id you may use az-cli to retrieve this information as follows:
