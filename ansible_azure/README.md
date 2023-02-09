@@ -1,4 +1,40 @@
-# Read this before begining
+# Installing Python libraries using Poetry and a little Bash
+* [Python Poetry](https://python-poetry.org/)
+
+To install the appropriate python libraries ensure you have poetry installed in your environment.
+
+```bash
+curl -sSL https://install.python-poetry.org | python3 -
+```
+
+Enter the poetry environment within the repository directory:
+
+```bash
+cd ansible_azure_practice/ansible_azure/
+```
+
+Install the Python dependancies using Poetry
+
+```bash
+poetry install
+```
+
+Install remaining dependancies using bash script.
+
+```bash
+sh ./runme.sh
+```
+
+Or run manually via cli:
+
+```bash
+poetry run pip3 install --upgrade pip; \
+	poetry run pip3 install --upgrade virtualenv; \
+	poetry run ansible-galaxy collection install azure.azcollection; \
+	poetry run pip3 install -r ~/.ansible/collections/ansible_collections/azure/azcollection/requirements-azure.txt
+```
+
+# Read this before attempting to authenticate with Azure
 * [Authenticating with Azure](https://docs.ansible.com/ansible/latest/scenario_guides/guide_azure.html)
 * [Connect to Azure from the Ansible container](https://learn.microsoft.com/en-us/azure/developer/ansible/configure-in-docker-container?tabs=azure-cli)
 
@@ -18,7 +54,6 @@ tenant=xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 subscriptionID=$(az account show --query id -o tsv)
 echo $subscriptionID
 ```
-
 ## Client ID
 
 The client ID is the unique Application (client) ID assigned to your app by Azure AD when the app was registered. You can find the Application (Client) ID in your Azure subscription by Azure AD => Enterprise applications => Application ID.
@@ -26,9 +61,6 @@ The client ID is the unique Application (client) ID assigned to your app by Azur
 ```bash
 az ad app list
 ```
-
-
-
 ## Resource group quick cli commands
 ### List resource groups
 
