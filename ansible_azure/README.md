@@ -67,13 +67,6 @@ To grab your subscription id you may use az-cli to retrieve this information as 
 subscriptionID=$(az account show --query id -o tsv)
 echo $subscriptionID
 ```
-### Client ID
-
-The client ID is the unique Application (client) ID assigned to your app by Azure AD when the app was registered. You can find the Application (Client) ID in your Azure subscription by Azure AD => Enterprise applications => Application ID.
-
-```bash
-az ad app list
-```
 
 ### Tenant ID 
 
@@ -83,6 +76,27 @@ An Azure AD tenant provides identity and access management (IAM) capabilities to
 
 ```bash
 az account list
+```
+### Resource group for new Application
+The below are some quick reference commands for creating a new resource group for this app. If you already have a resource group you can use ignore this section.
+
+#### List resource groups
+
+```bash
+az group list
+```
+
+#### To create a new resource 
+Run the below command with `az` only if you need to create a resource group 
+
+```bash
+az group create --name demoResourceGroup --location eastus
+```
+#### Delete a resource group
+If you no longer need a resource group you can delete it as follows:
+
+```bash
+az group delete --resource-group exampleGroup
 ```
 
 ### Service Principle Secret
@@ -94,26 +108,26 @@ An Azure AD application is defined by its one and only application object, which
 * A `service principal` is created in every tenant where the application is used. 
 * To access resources that are secured by an Azure AD tenant, the entity that requires access must be represented by a `security principal`.
  
-In this particular case we are using an `Application` type of service principle vs a `Managed Identity` or `Legacy App` types.
-
-
-
-## Resource group quick cli commands
-### List resource groups
+In this particular case we are using an `Application` type of service principle vs a `Managed Identity` or `Legacy App` types. If you do not already have a application type service principle you may create one using the following commands:
 
 ```bash
-az group list
+let "randomIdentifier=$RANDOM*$RANDOM"  
+servicePrincipalName="msdocs-sp-$randomIdentifier"
+roleName="Contributor"
+subscriptionID=$(az account show --query id -o tsv)
+# Verify the ID of the active subscription
+echo "Using subscription ID $subscriptionID"
+resourceGroup="myResourceGroupName"
+
+echo "Creating SP for RBAC with name $servicePrincipalName, with role $roleName and in scopes /subscriptions/$subscriptionID/resourceGroups/$resourceGroup"
+az ad sp create-for-rbac --name $servicePrincipalName --role $roleName --scopes /subscriptions/$subscriptionID/resourceGroups/$resourceGroup
 ```
 
-### To create a new resource 
-Run the below command with `az` only if you need to create a resource group 
+
+### Client ID
+
+The client ID is the unique Application (client) ID assigned to your app by Azure AD when the app was registered. You can find the Application (Client) ID in your Azure subscription by Azure AD => Enterprise applications => Application ID.
 
 ```bash
-az group create --name demoResourceGroup --location eastus
-```
-### Delete a resource group
-If you no longer need a resource group you can delete it as follows:
-
-```bash
-az group delete --name exampleGroup
+az ad app list
 ```
