@@ -1,4 +1,4 @@
-# Installing Python libraries using Poetry and a little Bash
+## Installing Python libraries using Poetry and a little Bash
 * [Python Poetry](https://python-poetry.org/)
 
 To install the appropriate python libraries ensure you have poetry installed in your environment.
@@ -75,7 +75,7 @@ The client ID is the unique Application (client) ID assigned to your app by Azur
 az ad app list
 ```
 
-# Tenant ID 
+### Tenant ID 
 
 * [Azure AD](https://learn.microsoft.com/en-us/microsoft-365/education/deploy/intro-azure-active-directory)
 
