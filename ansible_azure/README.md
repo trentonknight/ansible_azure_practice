@@ -50,7 +50,7 @@ secret=xxxxxxxxxxxxxxxxx
 tenant=xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 ```
 
-Alternativly you could export via .bashrc or directly in terminal if needed:
+Alternatively, you could export via .bashrc or directly in terminal if needed:
 
 ```bash
 export AZURE_TENANT="<azure_tenant_id>"
