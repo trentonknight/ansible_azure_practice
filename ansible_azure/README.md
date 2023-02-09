@@ -59,19 +59,45 @@ export AZURE_CLIENT_ID="<service_principal_app_id>"
 export AZURE_SECRET="<service_principal_password>"
 ```
 
-## To grab your subscrition id you may use az-cli to retrieve this information as follows:
+### Subscription ID
+
+To grab your subscription id you may use az-cli to retrieve this information as follows:
 
 ```bash
 subscriptionID=$(az account show --query id -o tsv)
 echo $subscriptionID
 ```
-## Client ID
+### Client ID
 
 The client ID is the unique Application (client) ID assigned to your app by Azure AD when the app was registered. You can find the Application (Client) ID in your Azure subscription by Azure AD => Enterprise applications => Application ID.
 
 ```bash
 az ad app list
 ```
+
+# Tenant ID 
+
+* [Azure AD](https://learn.microsoft.com/en-us/microsoft-365/education/deploy/intro-azure-active-directory)
+
+An Azure AD tenant provides identity and access management (IAM) capabilities to applications and resources used by your organization. An identity is a directory object that can be authenticated and authorized for access to a resource. Identity objects exist for human identities such as students and teachers, and non-human identities like classroom and student devices, applications, and service principles. Make sure you are using the correct `tenantId` if you have multiple accounts. 
+
+```bash
+az account list
+```
+
+### Service Principle Secret
+
+* [app-objects-and-service-principals](https://learn.microsoft.com/en-us/azure/active-directory/develop/app-objects-and-service-principals)
+
+An Azure AD application is defined by its one and only application object, which resides in the Azure AD tenant where the application was registered (known as the application's "home" tenant):
+* An `application object` is used as a template or blueprint to create one or more service principal objects. 
+* A `service principal` is created in every tenant where the application is used. 
+* To access resources that are secured by an Azure AD tenant, the entity that requires access must be represented by a `security principal`.
+ 
+In this particular case we are using an `Application` type of service principle vs a `Managed Identity` or `Legacy App` types.
+
+
+
 ## Resource group quick cli commands
 ### List resource groups
 
@@ -91,15 +117,3 @@ If you no longer need a resource group you can delete it as follows:
 ```bash
 az group delete --name exampleGroup
 ```
-
-# List your Tenants 
-
-* [Azure AD](https://learn.microsoft.com/en-us/microsoft-365/education/deploy/intro-azure-active-directory)
-
-An Azure AD tenant provides identity and access management (IAM) capabilities to applications and resources used by your organization. An identity is a directory object that can be authenticated and authorized for access to a resource. Identity objects exist for human identities such as students and teachers, and non-human identities like classroom and student devices, applications, and service principles. Make sure you are using the correct `tenantId` if you have multiple accounts. 
-
-```bash
-az account list
-```
-
-
