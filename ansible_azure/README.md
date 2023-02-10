@@ -1,5 +1,44 @@
-## Installing Python libraries using Poetry and a little Bash
+## Poetry and Ansible to simplify playbook environments
+This project utilizes Poetry to build ansible without dealing with Python dependancy hell. The below details how to install the Python environment quickly using Poetry followed by a simply Bash script which also calls Poetry to ensure the Azure libraries are installed. At this time Poetry requires Python 3.7+. Past the default Python 3 installation Poetry will utilize pip3 to handle all dependancies.  
+
+
+
+### Installing Python libraries using Poetry and a little Bash
+* [Python Downmloads](https://www.python.org/downloads/)
 * [Python Poetry](https://python-poetry.org/)
+
+To install Python 3 installation on Ubuntu or other Debian based Linux distributions:
+
+```bash
+sudo apt install python
+```
+Or a specific version such as Python 3.11
+```bash
+sudo apt install python3.11
+```
+For RedHat based distros such as Fedora, Centos or others use:
+
+```bash
+sudo dnf -y install python
+```
+Or a specfic version such as Python 3.11
+
+```bash
+sudo dnf -y install python
+```
+For Arch linux based distros like Mandriva:
+
+```bash
+sudo pacman -Sy python
+```
+To verify Python version use the following:
+
+```bash
+Python --version
+```
+
+
+
 
 To install the appropriate python libraries ensure you have poetry installed in your environment.
 
