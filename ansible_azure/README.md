@@ -202,5 +202,29 @@ If you know the `client_id` which is also the `app id` you may use the following
 ```bash
 az ad app show --id 00000000-0000-0000-0000-000000000000
 ```
+## Finally running a ansible playbook
 
+Before running the `play-azure.yaml` ansible playbook make sure to edit the name of the resourcegroup shown as `rg_ansible` in the example playbook in this project:
+
+```yaml
+---
+- name: azure  
+  hosts: localhost
+  connection: local
+  gather_facts: false
+
+  tasks: 
+    - name: getresourcegroupinfo
+      azure.azcollection.azure_rm_resourcegroup_info:
+        name: rg_ansible
+      register: rginfo
+
+    - name: debug
+      debug: 
+        var: rginfo  
+```
+
+Once you have changed `name: rg_ansible` to match your resource group. For example: `name: my_resource_group`.
+
+ 
 
