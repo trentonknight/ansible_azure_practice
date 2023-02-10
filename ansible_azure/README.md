@@ -4,7 +4,7 @@ This project utilizes Poetry to build ansible without dealing with Python depend
 
 
 ### Installing Python libraries using Poetry and a little Bash
-* [Python Downmloads](https://www.python.org/downloads/)
+* [Python Downloads](https://www.python.org/downloads/)
 * [Python Poetry](https://python-poetry.org/)
 
 To install Python 3 installation on Ubuntu or other Debian based Linux distributions:
