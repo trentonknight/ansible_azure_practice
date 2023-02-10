@@ -102,13 +102,14 @@ az group delete --resource-group exampleGroup
 ### Service Principle Secret
 
 * [app-objects-and-service-principals](https://learn.microsoft.com/en-us/azure/active-directory/develop/app-objects-and-service-principals)
+* [create-an-azure-service-principle-azure-cli](https://learn.microsoft.com/en-us/cli/azure/create-an-azure-service-principal-azure-cli)
 
 An Azure AD application is defined by its one and only application object, which resides in the Azure AD tenant where the application was registered (known as the application's "home" tenant):
 * An `application object` is used as a template or blueprint to create one or more service principal objects. 
 * A `service principal` is created in every tenant where the application is used. 
 * To access resources that are secured by an Azure AD tenant, the entity that requires access must be represented by a `security principal`.
  
-In this particular case we are using an `Application` type of service principle vs a `Managed Identity` or `Legacy App` types. If you do not already have a application type service principle you may create one using the following commands:
+In this particular case we are using an `Application` type of service principle instead of a `Managed Identity`, or `Legacy App`. If you do not already have a `Application` type `service principal` you may create one using the following commands:
 
 ```bash
 let "randomIdentifier=$RANDOM*$RANDOM"  
@@ -123,6 +124,12 @@ echo "Creating SP for RBAC with name $servicePrincipalName, with role $roleName 
 az ad sp create-for-rbac --name $servicePrincipalName --role $roleName --scopes /subscriptions/$subscriptionID/resourceGroups/$resourceGroup
 ```
 
+
+#### Reset creds for service principle
+
+```bash
+az ad sp credential reset --name myServicePrincipal_appID_or_name
+```
 
 ### Client ID
 
