@@ -127,16 +127,41 @@ az ad sp create-for-rbac --name $servicePrincipalName --role $roleName --scopes 
 
 #### Reset creds for service principle
 
+* [az-ad-sp-credential-reset](https://learn.microsoft.com/en-us/cli/azure/ad/sp/credential?view=azure-cli-latest#az-ad-sp-credential-reset)
+
 ```bash
-az ad sp credential reset --name myServicePrincipal_appID_or_name
+az ad sp credential reset --name myServicePrincipal_name
 ```
+or using the id
+
+```bash
+az ad sp credential reset --id 00000000-0000-0000-0000-000000000000
+```
+
+This should give you a fresh password aka secret for your service principal. For example:
+
+```bash
+az ad sp credential reset --id "00000000-0000-0000-0000-000000000000"
+The output includes credentials that you must protect. Be sure that you do not include these credentials in your code or check the credentials into your source control. For more information, see https://aka.ms/azadsp-cli
+{
+  "appId": "00000000-0000-0000-0000-000000000000",
+  "password": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+  "tenant": "00000000-0000-0000-0000-000000000000"
+}
+```
+Copy these changes to your `~/.azure/credentials` file.
 
 ### Client ID
 
-The client ID is the unique Application (client) ID assigned to your app by Azure AD when the app was registered. You can find the Application (Client) ID in your Azure subscription by Azure AD &rarr Enterprise applications &rarr Application ID.
+The client ID is the unique Application (client) ID assigned to your app by Azure AD when the app was registered. You can find the Application (Client) ID in your Azure subscription by Azure AD -> Enterprise applications -> Application ID.
 
 ```bash
 az ad app list
+```
+If you know the `client_id` which is also the `app id` you may use the following command to get full details:
+
+```bash
+az ad app show --id 00000000-0000-0000-0000-000000000000
 ```
 
 
