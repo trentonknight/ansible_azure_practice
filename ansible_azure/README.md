@@ -133,8 +133,10 @@ az ad sp credential reset --name myServicePrincipal_appID_or_name
 
 ### Client ID
 
-The client ID is the unique Application (client) ID assigned to your app by Azure AD when the app was registered. You can find the Application (Client) ID in your Azure subscription by Azure AD => Enterprise applications => Application ID.
+The client ID is the unique Application (client) ID assigned to your app by Azure AD when the app was registered. You can find the Application (Client) ID in your Azure subscription by Azure AD &rarr Enterprise applications &rarr Application ID.
 
 ```bash
 az ad app list
 ```
+
+
