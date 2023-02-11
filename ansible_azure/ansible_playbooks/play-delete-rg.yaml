@@ -1,0 +1,14 @@
+---
+- name: azure  
+  hosts: localhost
+  connection: local
+  gather_facts: false
+
+  tasks:
+    - name: Delete a resource group including resources it contains
+      azure.azcollection.azure_rm_resourcegroup:
+        name: rg_bravo
+        force_delete_nonempty: yes
+        state: absent
+
+

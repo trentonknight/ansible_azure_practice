@@ -1,0 +1,8 @@
+---
+- hosts: localhost
+  connection: local
+  tasks:
+    - name: Creating resource group 
+      azure.azcollection.azure_rm_resourcegroup:
+        name: rg_charlie
+        location: eastus

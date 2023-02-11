@@ -1,0 +1,12 @@
+---
+- name: azure  
+  hosts: localhost
+  connection: local
+  gather_facts: false
+
+  tasks: 
+    - name: Create storage account
+      azure.azcollection.azure_rm_storageaccount:
+        resource_group: rg_bravo
+        name: rgbravoteststorage01
+        account_type: Standard_LRS

@@ -163,7 +163,13 @@ echo "Creating SP for RBAC with name $servicePrincipalName, with role $roleName 
 az ad sp create-for-rbac --name $servicePrincipalName --role $roleName --scopes /subscriptions/$subscriptionID/resourceGroups/$resourceGroup
 ```
 
+#### Add a new Resource Group to an existing Service Priniciple
 
+In the event a resource group is deleted and you may use the existing appID of the Application service principal and assign a new role assignment with a new resource group as follows: 
+
+```bash
+az role assignment create --assignee appID --role $roleName --scope /subscriptions/$subscriptionID/resourceGroups/$resourceGroup
+```
 #### Reset creds for service principle
 
 * [az-ad-sp-credential-reset](https://learn.microsoft.com/en-us/cli/azure/ad/sp/credential?view=azure-cli-latest#az-ad-sp-credential-reset)
@@ -191,6 +197,8 @@ The output includes credentials that you must protect. Be sure that you do not i
 Copy these changes to your `~/.azure/credentials` file.
 
 ### Client ID
+
+* [Azure RegisteredApps](https://portal.azure.com/#view/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/~/RegisteredApps)
 
 The client ID is the unique Application (client) ID assigned to your app by Azure AD when the app was registered. You can find the Application (Client) ID in your Azure subscription by Azure AD -> Enterprise applications -> Application ID.
 
@@ -226,5 +234,5 @@ Before running the `play-azure.yaml` ansible playbook make sure to edit the name
 
 Once you have changed `name: rg_ansible` to match your resource group. For example: `name: my_resource_group`.
 
- 
+
 
