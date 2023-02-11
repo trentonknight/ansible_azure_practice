@@ -7,7 +7,7 @@
   tasks: 
     - name: getresourcegroupinfo
       azure.azcollection.azure_rm_resourcegroup_info:
-        name: rg_ansible
+        name: rg_bravo
       register: rginfo
 
     - name: debug
