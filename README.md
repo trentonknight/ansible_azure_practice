@@ -165,7 +165,7 @@ az ad sp create-for-rbac --name $servicePrincipalName --role $roleName --scopes 
 
 #### Add a new Resource Group to an existing Service Priniciple
 
-In the event a resource group is deleted and you may use the existing appID of the Application service principal and assign a new role assignment with a new resource group as follows: 
+In the event the resource group used with a service principal is deleted you may use the existing appID of the service principal and assign it a new role assignment with an existing resource group as follows: 
 
 ```bash
 az role assignment create --assignee appID --role $roleName --scope /subscriptions/$subscriptionID/resourceGroups/$resourceGroup
