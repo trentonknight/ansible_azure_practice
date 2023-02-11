@@ -205,7 +205,7 @@ The client ID is the unique Application (client) ID assigned to your app by Azur
 ```bash
 az ad app list
 ```
-If you know the `client_id` which is also the `app id` you may use the following command to get full details:
+If you know the `client_id`, which is also known as the `appId`, you may use the following command to get full details:
 
 ```bash
 az ad app show --id 00000000-0000-0000-0000-000000000000
