@@ -239,4 +239,5 @@ Once you have changed `name: rg_ansible` to match your resource group. For examp
 poetry run ansible-playbook ansible_playbooks/play-azure.yaml
 ```
 
+test
 
