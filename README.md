@@ -232,7 +232,11 @@ Before running the `play-azure.yaml` ansible playbook make sure to edit the name
         var: rginfo  
 ```
 
-Once you have changed `name: rg_ansible` to match your resource group. For example: `name: my_resource_group`.
+Once you have changed `name: rg_ansible` to match your resource group. For example: `name: my_resource_group`. Now run the following command to run ansible-playbook inside the poetry environment: 
 
+
+```bash
+poetry run ansible-playbook ansible_playbooks/play-azure.yaml
+```
 
 
